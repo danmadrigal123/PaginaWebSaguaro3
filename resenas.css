@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+body {
+    background-image: url(assets/01humpbackwhales.webp); /* Color de fondo blanco */
+    margin: 0; /* Elimina los márgenes predeterminados */
+    padding: 0; /* Elimina los rellenos predeterminados */
+    font-family: Arial, sans-serif; /* Tipo de letra */
+}
+
+nav {
+    background-color: #f1f1f1;
+    padding: 0 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px; /* Adjust the height as needed */
+}
+
+.nav-content {
+    display: flex;
+    align-items: center; /* Vertically center contents within nav-content */
+}
+
+.links {
+    display: flex;
+    margin-right: 20px; /* Adjust this value to increase/decrease spacing to the image */
+}
+
+nav a {
+    color: black;
+    text-decoration: none; /* Elimina el subrayado de los vínculos */
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.nav-image {
+    height: 70px;
+    width: auto; /* Maintain aspect ratio */
+    margin-left: 20px; /* Space from the links */
+}
+
+.nav-image2 {
+    height: 86px;
+    width: auto; /* Maintain aspect ratio */
+}
+
+nav a.logo{
+    font-size: 33px;
+    color: #0f2182;
+    font-weight: 600;
+}
+
+nav .links a:not(:last-child){
+    margin-right: 20px;
+}
+
+nav .login button{
+    padding: 8px 14px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+nav .login button.signup{
+    background-color: #000;
+    color: #fff;
+    border-radius: 4px;
+    margin-right: 14px;
+}
+
+
+@media screen and (max-width: 768px) {
+    
+    nav,
+    header,
+    h2.separator,
+    .sell-nft,
+    .nft-shop,
+    .sellers{
+        padding: 0 20px;
+    }
+
+    nav a.logo{
+        display: none;
+    }
+
+    nav .links a{
+        font-size: 12px;
+    }
+
+    nav .login button{
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    footer{
+        padding: 100px 40px;
+    }
+
+    footer h3{
+        font-size: 38px;
+    }
+
+}
+
+
+
+
+.deja-resena {
+    width: 60%;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    padding: 30px;
+    text-align: center;
+}
+
+.deja-resena input,
+.deja-resena textarea {
+    width: 90%;
+    padding: 10px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.deja-resena button {
+    margin-top: 15px;
+    padding: 10px 24px;
+    background: #0f2182;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.deja-resena button:hover {
+    background: #0a1559;
+}
+
+
+
+/* Lista de reseñas */
+.lista-resenas {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto 80px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 25px;
+}
+
+.lista-resenas h2 {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 25px;
+}
+
+.lista-resenas ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-resenas li {
+    background-color: #f1f5f9;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.lista-resenas li:hover {
+    transform: translateY(-2px);
+}
+
+.lista-resenas strong {
+    color: #003366;
+    font-size: 1.1em;
+}
+
+.lista-resenas p {
+    margin: 8px 0 10px;
+    line-height: 1.5;
+}
+
+/* Botones dentro de las reseñas */
+.lista-resenas button {
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lista-resenas button:hover {
+    transform: scale(1.05);
+}
+
+.lista-resenas button:first-of-type {
+    background-color: #ffd700;
+    color: #222;
+}
+
+.lista-resenas button:last-of-type {
+    background-color: #e63946;
+    color: #fff;
+    margin-left: 8px;
+}
+
+/* Texto cuando no hay reseñas */
+.lista-resenas p {
+    text-align: center;
+    color: #666;
+}
+
+footer{ 
+    background-color: #000;
+    color: #fff;
+    padding: 100px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer h3{
+    font-size: 48px;
+}
+
+footer .right{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 26px;
+}
+
+footer .right .links{
+    display: flex;
+    gap: 30px;
+}
+
+footer .right .links a{
+    color: #989898;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+footer .right .links a:hover{
+    color: #fff;
+}
+
+footer .right .social{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+footer .right p{
+    font-size: 13px;
+    color: #777;
+}
+
+
+@media screen and (max-width: 1200px) {
+    footer .links a{
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    footer{
+        flex-direction: column;
+        padding: 60px 40px;
+    }
+
+    footer h3{
+        margin-bottom: 40px;
+        font-size: 32px;
+    }
+
+    footer .right{
+        width: 100%;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    footer{
+        padding: 40px 20px;
+    }
+}
+

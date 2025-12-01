@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Reporte de investigación</title>
+<link rel="stylesheet" type="text/css" href="resenas.css">
+</head>
+<body>
+    <nav>
+        <img src="https://cdn-icons-png.flaticon.com/512/1998/1998810.png" alt="Ballena Saguaro" class="nav-image2">
+       <a href="index.html" class="logo">Proyecto Saguaro</a>
+        <div class="nav-content">
+            <div class="links">
+                <a href="que_es.html">¿Qué es?</a>
+                <a href="impacto.html">Impacto ecológico</a>
+                <a href="soluciones.html">Alternativas y Soluciones</a>
+                <a href="audiovisuales.html">Audiovisuales</a>
+                <a href="resenas.html">Reseñas</a>
+            </div>
+            <img src="https://scontent-qro1-1.xx.fbcdn.net/v/t39.30808-6/326260511_574015414208513_8353132718702783704_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=JcXDjJEfP54Q7kNvwFY2r5K&_nc_oc=AdkH8Ztk9mL0BS1hR4T_1SfgIq2zevbPPn-3EXg_RoVUyEFyiJHoTa7n-n1qaB4FXpE&_nc_zt=23&_nc_ht=scontent-qro1-1.xx&_nc_gid=MuqlgUsyreIJ1VuaMkEzJw&oh=00_AfjaCXRYcAkE2Dv9mI9-ZOMIo3u7vryK9jA64isa_J6ENA&oe=692E8C0F" alt="" class="nav-image">
+        </div>
+    </nav>
+    <div class="container">
+        <header></header>
+    </div>
+
+    <div class="deja-resena">
+        <h2>Comparte tu experiencia</h2>
+        <form id="formResena">
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre" required><br><br>
+            
+            <label for="resena">Tu reseña:</label><br>
+            <textarea id="resena" name="resena" rows="5" required></textarea><br><br>
+            
+            <button type="submit">Enviar reseña</button>
+        </form>
+    </div>
+
+    <div class="lista-resenas">
+        <h2>Reseñas de otros usuarios</h2>
+        <ul id="resenasGuardadas"></ul>
+    </div>
+
+    <footer>
+        <h3>Universidad Iberoamericana Puebla</h3>
+        <div class="right">
+            <div class="links">
+                <a href="politicas.html">Políticas de privacidad</a>
+                <a href="contactanos.html">Contáctanos</a>
+            </div>
+            <p>Copyright © 2025 Universidad Iberoamericana Puebla.</p>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.getElementById('formResena');
+        const lista = document.getElementById('resenasGuardadas');
+        let modoEdicion = null; // índice de la reseña que se está editando
+
+        document.addEventListener('DOMContentLoaded', mostrarResenas);
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value.trim();
+            const texto = document.getElementById('resena').value.trim();
+            if (!nombre || !texto) return;
+
+            const resenas = JSON.parse(localStorage.getItem('resenas')) || [];
+
+            if (modoEdicion !== null) {
+                // Editar reseña existente
+                resenas[modoEdicion].nombre = nombre;
+                resenas[modoEdicion].texto = texto;
+                resenas[modoEdicion].fecha = new Date().toLocaleString();
+                modoEdicion = null;
+            } else {
+                // Agregar nueva reseña
+                const nuevaResena = { nombre, texto, fecha: new Date().toLocaleString() };
+                resenas.unshift(nuevaResena);
+            }
+
+            localStorage.setItem('resenas', JSON.stringify(resenas));
+            form.reset();
+            mostrarResenas();
+        });
+
+        function mostrarResenas() {
+            lista.innerHTML = '';
+            const resenas = JSON.parse(localStorage.getItem('resenas')) || [];
+
+            if (resenas.length === 0) {
+                lista.innerHTML = '<p>Aún no hay reseñas. ¡Sé la primera en dejar la tuya!</p>';
+                return;
+            }
+
+            resenas.forEach((r, i) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <strong>${r.nombre}</strong> 
+                    <span style="font-size:0.8em; color:gray;">(${r.fecha})</span>
+                    <p>${r.texto}</p>
+                    <button onclick="editarResena(${i})" style="margin-right: 5px;">Editar</button>
+                    <button onclick="eliminarResena(${i})" style="background-color:#d9534f; color:white;">Eliminar</button>
+                `;
+                lista.appendChild(li);
+            });
+        }
+
+        function eliminarResena(index) {
+            const resenas = JSON.parse(localStorage.getItem('resenas')) || [];
+            if (confirm("¿Seguro que quieres eliminar esta reseña?")) {
+                resenas.splice(index, 1);
+                localStorage.setItem('resenas', JSON.stringify(resenas));
+                mostrarResenas();
+            }
+        }
+
+        function editarResena(index) {
+            const resenas = JSON.parse(localStorage.getItem('resenas')) || [];
+            const r = resenas[index];
+            document.getElementById('nombre').value = r.nombre;
+            document.getElementById('resena').value = r.texto;
+            modoEdicion = index;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

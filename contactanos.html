@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Contáctanos</title>
+<link rel="stylesheet" type="text/css" href="contáctanos.css">
+<link rel="style.css">
+</head>
+<body>
+    <nav>
+        <img src="https://cdn-icons-png.flaticon.com/512/1998/1998810.png" alt="Ballena Saguaro" class="nav-image2">
+       <a href="index.html" class="logo">Proyecto Saguaro</a>
+        <div class="nav-content">
+            <div class="links">
+                <a href="que_es.html">¿Qué es?</a>
+                <a href="impacto.html">Impacto ecológico</a>
+                <a href="soluciones.html">Alternativas y Soluciones</a>
+                <a href="audiovisuales.html">Audiovisuales</a>
+                <a href="resenas.html">Reseñas</a>
+            </div>
+            <img src="https://scontent-qro1-1.xx.fbcdn.net/v/t39.30808-6/326260511_574015414208513_8353132718702783704_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=JcXDjJEfP54Q7kNvwFY2r5K&_nc_oc=AdkH8Ztk9mL0BS1hR4T_1SfgIq2zevbPPn-3EXg_RoVUyEFyiJHoTa7n-n1qaB4FXpE&_nc_zt=23&_nc_ht=scontent-qro1-1.xx&_nc_gid=MuqlgUsyreIJ1VuaMkEzJw&oh=00_AfjaCXRYcAkE2Dv9mI9-ZOMIo3u7vryK9jA64isa_J6ENA&oe=692E8C0F" alt="" class="nav-image">
+        </div>
+    </nav>
+    <!-- Sección de Contáctanos -->
+    <section class="contacto">
+        <h2>Contáctanos</h2>
+
+        <!-- FORMULARIO CON FORM ACTION REAL -->
+        <form action="https://formspree.io/f/mpwybnbb" method="POST">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="asunto">Asunto:</label>
+                <input type="text" id="asunto" name="asunto" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+            </div>
+
+            <button type="submit">Enviar</button>
+        </form>
+
+        <p id="mensajeConfirmacion" style="text-align:center; color:green; margin-top:10px;"></p>
+    </section>
+    <footer>
+        <h3>Universidad Iberoamericana Puebla</h3>
+        <div class="right">
+            <div class="links">
+                <a href="politicas.html">Políticas de privacidad</a>
+                <a href="contactanos.html">Contáctanos</a>
+            </div>
+            
+            <p>Copyright © 2025 Universidad Iberoamericana Puebla.</p>
+        </div>
+    </footer>
+    <script>
+        // Pequeña confirmación visual después del envío
+        const form = document.querySelector("form");
+        const confirmacion = document.getElementById("mensajeConfirmacion");
+
+        form.addEventListener("submit", (e) => {
+            confirmacion.innerText = "Enviando mensaje...";
+            setTimeout(() => {
+                confirmacion.innerText = "¡Gracias por contactarnos! Tu mensaje fue enviado correctamente 💌";
+                form.reset();
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
